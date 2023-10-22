@@ -1,0 +1,66 @@
+export const defaultTheme = {
+  colors: {
+    purple700: '#4748b1',
+    purple600: '#5152b0',
+    purple500: '#7a7bf0',
+    purple400: '#9394fe',
+
+    purple300: '#AA85D6',
+
+    gray950: '#020617',
+    gray900: '#0f172a',
+    gray800: '#1e293b',
+    gray700: '#334155',
+    gray600: '#475569',
+    gray500: '#64748b',
+    gray400: '#94a3b8',
+
+    gray300: '#cbd5e1',
+
+    gray200: '#e2e8f0',
+    gray100: '#f1f5f9',
+    gray50: '#f8fafc',
+
+    white: '#FFFFFF',
+
+    green950: '#052e16',
+    green900: '#14532d',
+    green800: '#166534',
+    green700: '#15803d',
+    green600: '#16a34a',
+    green500: '#22c55e',
+    green400: '#4ade80',
+    green300: '#86efac',
+    green200: '#bbf7d0',
+    green100: '#dcfce7',
+    gree50: '#f0fdf4',
+
+    red950: '#450a0a',
+    red900: '#7f1d1d',
+    red800: '#991b1b',
+    red700: '#b91c1c',
+    red600: '#dc2626',
+    red500: '#ef4444',
+    red400: '#f87171',
+    red300: '#fca5a5',
+    red200: '#fecaca',
+    red100: '#fee2e2',
+    red50: '#fef2f2',
+
+    yellow950: '#422006',
+    yellow900: '#713f12',
+    yellow800: '#854d0e',
+    yellow700: '#a16207',
+    yellow600: '#ca8a04',
+    yellow500: '#eab308',
+    yellow400: '#facc15',
+    yellow300: '#fde047',
+    yellow200: '#fef08a',
+    yellow100: '#fef9c3',
+    yellow50: '#fefce8',
+
+    blue600: '#0153D1',
+    blue800: '#34374A',
+    blue900: '#2C3242',
+  },
+};
