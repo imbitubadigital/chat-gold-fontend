@@ -16,10 +16,10 @@ export const ContainerInput = styled.div<ContainerInputProps>`
   border-radius: 4px;
   padding: 0.75rem 1rem;
   width: 100%;
-  background: rgba(81, 96, 113, 0.22);
+  background: ${(props) => props.theme.colors.white};
   border: 1px solid
     ${(props) =>
-      props.$error ? props.theme.colors.red600 : props.theme.colors.gray500};
+      props.$error ? props.theme.colors.red600 : props.theme.colors.gray950};
 
   input {
     width: 100%;
@@ -28,7 +28,7 @@ export const ContainerInput = styled.div<ContainerInputProps>`
     border: 0;
     outline: none;
     font-size: 0.875rem;
-    color: ${(props) => props.theme.colors.gray50};
+    color: ${(props) => props.theme.colors.gray950};
 
     &::-webkit-datetime-edit-fields-wrapper {
       font-size: 0.875rem;
@@ -65,4 +65,11 @@ export const ContainerIcon = styled.div`
   }
 `;
 
-export const ContainerError = styled.div``;
+export const ContainerError = styled.div`
+  min-height: 1.25rem;
+
+  span {
+    font-size: 0.875rem;
+    color: ${(props) => props.theme.colors.red600};
+  }
+`;
