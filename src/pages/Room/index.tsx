@@ -1,14 +1,14 @@
-import { useAuthStore } from '@/store/auth';
+import { useAuthStore } from '../../store/auth';
 import * as S from './styles';
 import { DashboardTemplate } from '@/components/templates/Dashboard';
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { Chat } from '@/components/Chat';
-import { Button } from '@/components/Button';
-import { MessageProps } from '@/services/http/message/types';
+import { Chat } from '../../components/Chat';
+import { Button } from '../../components/Button';
+import { MessageProps } from '../../services/http/message/types';
 
-import { useSocket } from '@/contexts/socket';
+import { useSocket } from '../../contexts/socket';
 export function Room() {
   const [searchParams] = useSearchParams();
 

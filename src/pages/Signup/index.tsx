@@ -1,5 +1,5 @@
 import * as S from './styles';
-import { FormSignup } from '@/components/FormSignup';
+import { FormSignup } from '../../components/FormSignup';
 
 export function Signup() {
   return (
