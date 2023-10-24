@@ -17,7 +17,7 @@ export const passwordManagerSchema = yup.object().shape({
     .min(8, 'Deve ter no mínimo 8 caracteres'),
   passwordConfirmation: yup
     .string()
-    .default('')
+    .required('Repita a senha')
     .oneOf([yup.ref('password'), ''], 'A senha e a repetição não conferem'),
 });
 
