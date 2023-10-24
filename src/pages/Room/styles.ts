@@ -3,20 +3,27 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: 2rem;
+
   min-height: calc(100vh - 3.75rem);
+  padding: 1rem 2rem;
 `;
 
-export const Left = styled.div`
+export const Header = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  flex: 1;
-  min-height: 200px;
-  padding: 1rem;
+  width: 100%;
+  margin-bottom: 10px;
+  h2 {
+    font-size: 1.5rem;
+    color: ${(props) => props.theme.colors.gray900};
+  }
+
+  div {
+    width: 150px;
+  }
 `;
 export const Right = styled.div`
   display: flex;

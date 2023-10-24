@@ -1,4 +1,4 @@
-export type ToastTypeProps = "success" | "alert" | "error";
+export type ToastTypeProps = 'success' | 'alert' | 'error';
 
 export interface ToastProps {
   message: string;

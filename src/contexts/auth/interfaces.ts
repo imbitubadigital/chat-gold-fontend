@@ -35,9 +35,9 @@ export interface UpdateProfileProps {
 }
 
 export interface AuthContextData {
-  data: StateDataProps;
+  // data: StateDataProps;
 
-  tokens: TokensProps;
+  // tokens: TokensProps;
   loading: boolean;
 
   signIn: (credentials: CredentialProps) => Promise<void>;
@@ -46,10 +46,10 @@ export interface AuthContextData {
   // codeVerification: (
   //   verificationData: CodeVerificationProps,
   // ) => Promise<boolean>;
-  updateProfile: (
-    id: string,
-    updateProfileData: UpdateProfileProps,
-  ) => Promise<boolean>;
+  // updateProfile: (
+  //   id: string,
+  //   updateProfileData: UpdateProfileProps,
+  // ) => Promise<boolean>;
 
   // createPassword: (createPasswordData: CreatePasswordProps) => Promise<void>;
 

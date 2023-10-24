@@ -63,10 +63,10 @@ export const GlobalStyles = createGlobalStyle`
             text-decoration: none;
         }
         .menu-active{
-          border: 1px solid #fff !important;
+          background: ${(props) => props.theme.colors.yellow700};
+          color: ${(props) => props.theme.colors.white}!important;
 
-
-          }
+         }
         .spinner {
             animation: ${rotationBuilder()} 1.8s linear infinite;
         }

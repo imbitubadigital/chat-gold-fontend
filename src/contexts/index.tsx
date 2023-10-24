@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
-import { ToastProvider } from './toast';
+
 import { AuthProvider } from './auth';
+import { SocketProvider } from './socket';
+import { ToastProvider } from './toast';
 
 interface AppProviderProps {
   children: ReactNode;
@@ -8,8 +10,10 @@ interface AppProviderProps {
 
 export function AppProvider({ children }: AppProviderProps) {
   return (
-    <ToastProvider>
-      <AuthProvider>{children}</AuthProvider>
-    </ToastProvider>
+    <SocketProvider>
+      <ToastProvider>
+        <AuthProvider>{children}</AuthProvider>
+      </ToastProvider>
+    </SocketProvider>
   );
 }

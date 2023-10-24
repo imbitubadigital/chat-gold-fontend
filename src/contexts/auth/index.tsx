@@ -16,8 +16,6 @@ import {
   ChangePasswordLoggedProps,
   CredentialProps,
   SignOutMessageProps,
-  TokensProps,
-  UpdateProfileProps,
 } from './interfaces';
 import {
   getDataStorage,
@@ -39,8 +37,6 @@ const AuthProvider = ({ children }: ChildrenData) => {
     actions: { settingUserDataStore, settingLogoutStore },
   } = useAuthStore();
 
-  const [data, setData] = useState({} as StateDataProps);
-  const [tokens, setTokens] = useState<TokensProps>({} as TokensProps);
   const [loading, setLoading] = useState(false);
 
   const settingData = useCallback(
@@ -48,7 +44,7 @@ const AuthProvider = ({ children }: ChildrenData) => {
       settingDataStorage(dataUser);
       settingUserDataStore(dataUser);
 
-      setData(dataUser);
+      //  setData(dataUser);
     },
     [settingUserDataStore],
   );
@@ -92,7 +88,7 @@ const AuthProvider = ({ children }: ChildrenData) => {
 
         api.defaults.headers.common.Authorization = `Bearer ${token}`;
         const dataTokens = { token, refreshToken };
-        setTokens(dataTokens);
+        //  setTokens(dataTokens);
         settingTokensStorage(dataTokens);
         settingData(response.data);
         addToast({ message: 'Seja bem vindo(a)', type: 'success' });
@@ -183,38 +179,38 @@ const AuthProvider = ({ children }: ChildrenData) => {
     [addToast, settingData, triggerError],
   );
 
-  const updateProfile = useCallback(
-    async (
-      id: string,
-      updateProfileData: UpdateProfileProps,
-    ): Promise<boolean> => {
-      try {
-        setLoading(true);
+  // const updateProfile = useCallback(
+  //   async (
+  //     id: string,
+  //     updateProfileData: UpdateProfileProps,
+  //   ): Promise<boolean> => {
+  //     try {
+  //       setLoading(true);
 
-        const response = await api.patch(`/profiles/${id}`, updateProfileData);
+  //       const response = await api.patch(`/profiles/${id}`, updateProfileData);
 
-        const upData = {
-          ...data,
-          user: {
-            ...data.user,
-            ...response.data,
-          },
-        };
-        settingData(upData);
-        addToast({
-          message: 'Perfil atualizado com sucesso.',
-          type: 'success',
-        });
-        return true;
-      } catch (error) {
-        triggerError(error);
-        return false;
-      } finally {
-        setLoading(false);
-      }
-    },
-    [addToast, data, settingData, triggerError],
-  );
+  //       const upData = {
+  //         ...data,
+  //         user: {
+  //           ...data.user,
+  //           ...response.data,
+  //         },
+  //       };
+  //       settingData(upData);
+  //       addToast({
+  //         message: 'Perfil atualizado com sucesso.',
+  //         type: 'success',
+  //       });
+  //       return true;
+  //     } catch (error) {
+  //       triggerError(error);
+  //       return false;
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   },
+  //   [addToast, data, settingData, triggerError],
+  // );
 
   useEffect(() => {
     const subscribe = api.registerInterceptTokenManager(signOut);
@@ -227,8 +223,6 @@ const AuthProvider = ({ children }: ChildrenData) => {
   return (
     <AuthContext.Provider
       value={{
-        data,
-        tokens,
         loading,
         settingData,
 
@@ -238,7 +232,7 @@ const AuthProvider = ({ children }: ChildrenData) => {
         //  createPassword,
         // forgotPassword,
         changePasswordLogged,
-        updateProfile,
+        //  updateProfile,
       }}
     >
       {children}

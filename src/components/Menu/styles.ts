@@ -3,31 +3,34 @@ import styled from 'styled-components';
 export const Container = styled.nav`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   a {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 120px;
+    width: 100%;
     height: 32px;
     border-radius: 8px;
-    color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.gray950};
     border: 1px solid transparent;
     text-decoration: none;
-
+    padding: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s;
 
     span {
-      font-size: 16px;
+      font-size: 1.125rem;
+      width: 100%;
+      font-weight: 600;
     }
 
     &:hover {
       span {
-        color: rgba(255, 255, 255, 0.7);
+        color: ${(props) => props.theme.colors.gray800};
       }
     }
   }
