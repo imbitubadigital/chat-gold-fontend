@@ -21,6 +21,17 @@ export type CredentialsProps = {
   email: string;
   password: string;
 };
+export type CreateAccountsProps = {
+  firstName: string;
+  lastName: string;
+  email: string;
+};
+export type ResponseCreateAccountsProps = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+};
 
 export type SessionProps = {
   refreshToken: string;

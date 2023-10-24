@@ -1,5 +1,10 @@
 import { api } from '@/services/api';
-import { CredentialsProps, SessionProps } from './types';
+import {
+  CreateAccountsProps,
+  CredentialsProps,
+  ResponseCreateAccountsProps,
+  SessionProps,
+} from './types';
 
 export async function signInRequest(
   credential: CredentialsProps,
@@ -8,6 +13,18 @@ export async function signInRequest(
   const { data } = await api.post<SessionProps>(
     '/auth-user/session',
     credential,
+    { signal },
+  );
+
+  return data;
+}
+export async function signUpRequest(
+  payload: CreateAccountsProps,
+  signal?: AbortSignal,
+): Promise<ResponseCreateAccountsProps> {
+  const { data } = await api.post<ResponseCreateAccountsProps>(
+    '/users/register',
+    payload,
     { signal },
   );
 

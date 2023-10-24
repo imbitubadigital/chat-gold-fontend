@@ -3751,6 +3751,11 @@ react-use-set@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-use-set/-/react-use-set-1.0.0.tgz#2b8b442c6e8c77a907534dcc665d54c3f7b3c841"
   integrity sha512-6BBbOcWc/tOKuwd9gDtdunvOr/g40S0SkCBYvrSJvpI0upzNlHmLoeDvylnoP8PrjQXItClAFxseVGGhEkk7kw==
 
+react-verification-input@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/react-verification-input/-/react-verification-input-3.3.1.tgz#b900831044733e9aefa48913b5e8b1db9eeaf2bd"
+  integrity sha512-MpUtMWw6nzK3JQz1pC/DExeoGZTVG7Xe3LacA6kAXuyZQ02eKCsoNs1FA5twj2LXZdemTVTvIlhS3Ht8UN+y3Q==
+
 react-window@^1.8.8:
   version "1.8.9"
   resolved "https://registry.yarnpkg.com/react-window/-/react-window-1.8.9.tgz#24bc346be73d0468cdf91998aac94e32bc7fa6a8"

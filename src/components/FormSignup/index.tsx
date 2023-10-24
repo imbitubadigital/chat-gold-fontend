@@ -4,36 +4,48 @@ import { Separator } from '../Separator';
 import * as S from './styles';
 
 import { NavLink } from 'react-router-dom';
-import { useSignin } from '@/hooks/account/signin';
 
-export function FormLogin() {
+import { useSignup } from '@/hooks/account/signup';
+
+export function FormSignup() {
   const {
+    loading,
     errors,
     handleSubmit,
     isDirty,
     isValid,
-    register,
-    loading,
     onSubmit,
-  } = useSignin();
+    register,
+  } = useSignup();
 
   return (
     <S.Container>
-      <h2>Faça seu login para entrar!</h2>
+      <h2>Faça seu cadastro!</h2>
       <Separator mt={1} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
-          placeholder="E-mail"
+          type="firstName"
+          placeholder="Seu nome"
+          error={errors?.firstName?.message || ''}
+          {...register('firstName')}
+        />
+
+        <Separator mt={1} />
+
+        <Input
+          type="lastName"
+          placeholder="Seu sobrenome"
+          error={errors?.lastName?.message || ''}
+          {...register('lastName')}
+        />
+        <Separator mt={1} />
+
+        <Input
+          placeholder="Seu e-mail"
           error={errors?.email?.message || ''}
           {...register('email')}
         />
-        <Separator mt={1} />
-        <Input
-          type="password"
-          placeholder="Senha"
-          error={errors?.password?.message || ''}
-          {...register('password')}
-        />
+
         <Separator mt={1} />
         <Button
           title="Entrar"
@@ -43,8 +55,8 @@ export function FormLogin() {
         />
         <Separator mt={2} />
         <S.ContainerLink>
-          <NavLink to={`/cadastro`}>
-            <span>Ainda nao tem conta? Cadastre-se!</span>
+          <NavLink to={`/`}>
+            <span>Voltar para login!</span>
           </NavLink>
         </S.ContainerLink>
       </form>

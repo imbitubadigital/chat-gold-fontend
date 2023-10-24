@@ -1,4 +1,4 @@
-import { FormLogin } from '@/components/formLogin';
+import { FormLogin } from '@/components/FormLogin';
 import * as S from './styles';
 
 export function Signin() {
