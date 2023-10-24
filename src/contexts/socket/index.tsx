@@ -9,7 +9,7 @@ type ChildrenData = {
 };
 export const SocketProvider = ({ children }: ChildrenData) => {
   const socket = useMemo(() => {
-    return io('http://localhost:3333', {
+    return io(import.meta.env.VITE_BASE_URL, {
       transports: ['websocket'],
     });
   }, []);
