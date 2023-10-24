@@ -2,7 +2,6 @@ import { Button } from '../Button';
 import { Input } from '../Input';
 import { Separator } from '../Separator';
 import * as S from './styles';
-
 import { NavLink } from 'react-router-dom';
 import { useSignin } from '../../hooks/account/signin';
 
