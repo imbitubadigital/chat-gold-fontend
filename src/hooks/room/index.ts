@@ -4,8 +4,10 @@ import { getRoomsRequest } from '@/services/http/room';
 import { RoomProps } from '@/services/http/room/types';
 import { useErrorHandling } from '../error-handling';
 import { useControlledRequest } from '../controller-request';
+import { useSocket } from '@/contexts/socket';
 
 export const useRoom = () => {
+  const { socket } = useSocket();
   const { triggerError } = useErrorHandling();
   const [getRoomsControllerRequest, getRoomsControllerAbort] =
     useControlledRequest(getRoomsRequest);
@@ -34,6 +36,16 @@ export const useRoom = () => {
       getRoomsControllerAbort();
     };
   }, [getRoomsControllerAbort]);
+
+  useEffect(() => {
+    socket.on('listRoomWithUsers', (payload) => {
+      setRooms(payload);
+    });
+
+    return () => {
+      socket.off('listRoomWithUsers');
+    };
+  }, [socket]);
 
   return {
     loading,

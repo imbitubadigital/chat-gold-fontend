@@ -32,7 +32,7 @@ export const ContainerInput = styled.div<ContainerInputProps>`
 
     &::-webkit-datetime-edit-fields-wrapper {
       font-size: 0.875rem;
-      color: ${(props) => props.theme.colors.gray400};
+      color: ${(props) => props.theme.colors.red400}!important;
       font-family: 'Montserrat', sans-serif;
     }
     &::placeholder {

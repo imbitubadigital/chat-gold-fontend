@@ -43,38 +43,3 @@ export const ContainerLink = styled.nav`
     }
   }
 `;
-
-export const ContainerForgot = styled.nav`
-  display: flex;
-  justify-content: center;
-
-  align-items: center;
-  gap: 8px;
-  a {
-    display: block;
-    width: 100%;
-    border-radius: 8px;
-    color: ${(props) => props.theme.colors.yellow700};
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    transition: all 0.3s;
-    text-align: center;
-
-    span {
-      font-size: 14px;
-      width: 100%;
-      font-weight: 600;
-      display: block;
-      text-align: right;
-    }
-
-    &:hover {
-      text-decoration: underline;
-      span {
-        color: ${(props) => props.theme.colors.yellow600};
-      }
-    }
-  }
-`;

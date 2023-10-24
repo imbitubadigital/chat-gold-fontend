@@ -38,3 +38,19 @@ export type SessionProps = {
   token: string;
   user: UserProps;
 };
+
+export type CodeValidationProps = {
+  code: number;
+  email: string;
+};
+
+export type CreatePasswordProps = {
+  code: number;
+  email: string;
+  password: string;
+};
+
+export interface ChangePasswordRequestProps {
+  password: string;
+  passwordConfirmation: string;
+}

@@ -1,15 +1,32 @@
+import { LocationProps, useCheckCode } from '@/hooks/account/check-code';
 import { Button } from '../Button';
 
 import { Separator } from '../Separator';
 import * as S from './styles';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate, useLocation } from 'react-router-dom';
 import VerificationInput from 'react-verification-input';
+import { useAuthStore } from '@/store/auth';
 
 export function FormValidateCode() {
-  const firstName = 'Antonio';
-  const email = 'antonio@teste.com';
+  const location = useLocation();
 
+  const { email, firstName, isCreate } = location.state as LocationProps;
+  const {
+    codeVerification,
+    error,
+    handleResendCode,
+    loading,
+    settingCode,
+    code,
+    timer,
+  } = useCheckCode({ email, firstName, isCreate });
+
+  const token = useAuthStore((store) => store.state.token);
+
+  if (token) {
+    return <Navigate to="/painel/home" />;
+  }
   return (
     <S.Container>
       <h2>Confirmação de código de acesso!</h2>
@@ -28,8 +45,7 @@ export function FormValidateCode() {
           length={4}
           validChars="0-9"
           autoFocus
-          // onChange={settingCode}
-          onChange={() => {}}
+          onChange={settingCode}
           placeholder="0"
           classNames={{
             container: 'container',
@@ -43,33 +59,25 @@ export function FormValidateCode() {
           type="button"
           mode="primary"
           title="Confirmar Código"
-          // onClick={codeVerification}
-          // disabled={!!error || code.length < 4 || loading}
-          // loading={loading}
+          onClick={codeVerification}
+          disabled={!!error || code.length < 4 || loading}
+          loading={loading}
         />
 
-        {/* <Button
-          type="button"
-          mode="secondary"
-          title="Não recebeu o código? Clique para reenviar"
-          // disabled={timer > 0}
-          // title={
-          //   timer > 0
-          //     ? `Reenviar em ${timer} seg${timer > 1 ? 's' : ''}!`
-          //     : 'Não recebeu o código? Clique para reenviar!'
-          // }
-          // onClick={handleResendCode}
-        /> */}
         <Separator mt={2} />
         <S.ContainerLink>
           <NavLink
-            to="/cadastro"
+            to="/"
             onClick={(e) => {
               e.preventDefault();
-              console.log('aaa');
+              handleResendCode();
             }}
           >
-            <span>Não recebeu o código? Clique para reenviar!</span>
+            <span>
+              {timer > 0
+                ? `Reenviar em ${timer} seg${timer > 1 ? 's' : ''}!`
+                : 'Não recebeu o código? Clique para reenviar!'}
+            </span>
           </NavLink>
         </S.ContainerLink>
       </form>

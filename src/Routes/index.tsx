@@ -11,6 +11,7 @@ import { Signup } from '@/pages/Signup';
 
 import { ValidateCode } from '@/pages/ValidateCode';
 import { Password } from '@/pages/Password';
+import { Forgot } from '@/pages/Forgot';
 
 export function AppRoutes() {
   const token = useAuthStore((store) => store.state.token);
@@ -22,6 +23,7 @@ export function AppRoutes() {
         <Route path="cadastrar-senha" element={<Password />} />
         <Route path="cadastro" element={<Signup />} />
         <Route path="validar-codigo" element={<ValidateCode />} />
+        <Route path="recuperar-senha" element={<Forgot />} />
       </Route>
 
       <Route path="panel" element={<PrivateRoutes isLogged={token !== null} />}>

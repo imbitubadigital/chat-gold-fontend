@@ -4,22 +4,26 @@ import { Separator } from '../Separator';
 import * as S from './styles';
 
 import { NavLink } from 'react-router-dom';
-import { useSignin } from '@/hooks/account/signin';
 
-export function FormLogin() {
+import { useForgotPassword } from '@/hooks/account/forgot-password';
+
+export function FormForgot() {
   const {
     errors,
+    onSubmit,
     handleSubmit,
     isDirty,
     isValid,
-    register,
     loading,
-    onSubmit,
-  } = useSignin();
+    register,
+  } = useForgotPassword();
 
   return (
     <S.Container>
-      <h2>Faça seu login para entrar!</h2>
+      <h2>
+        Para redefinir sua senha, informe o email cadastrado na sua conta, e
+        vamos enviar um e-mail com as instruções.
+      </h2>
       <Separator mt={1} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
@@ -27,19 +31,7 @@ export function FormLogin() {
           error={errors?.email?.message || ''}
           {...register('email')}
         />
-        <Separator mt={1} />
-        <Input
-          type="password"
-          placeholder="Senha"
-          error={errors?.password?.message || ''}
-          {...register('password')}
-        />
 
-        <S.ContainerForgot>
-          <NavLink to={`/recuperar-senha`}>
-            <span>Esqueceu a senha?</span>
-          </NavLink>
-        </S.ContainerForgot>
         <Separator mt={1} />
         <Button
           title="Entrar"
@@ -49,8 +41,8 @@ export function FormLogin() {
         />
         <Separator mt={2} />
         <S.ContainerLink>
-          <NavLink to={`/cadastro`}>
-            <span>Ainda nao tem conta? Cadastre-se!</span>
+          <NavLink to={`/`}>
+            <span>Voltar para o login!</span>
           </NavLink>
         </S.ContainerLink>
       </form>

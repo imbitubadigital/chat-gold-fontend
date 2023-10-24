@@ -1,36 +1,40 @@
-import { useCallback } from 'react';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { Separator } from '../Separator';
 import * as S from './styles';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { passwordManagerSchema } from '@/utils/yup';
-import { useAuth } from '@/contexts/auth';
-import { CredentialProps } from '@/contexts/auth/interfaces';
-import { NavLink } from 'react-router-dom';
 
+import { useAuthStore } from '@/store/auth';
+import { usePasswordManager } from '@/hooks/account/password';
+import { Navigate, useLocation } from 'react-router-dom';
+export type LocationProps = {
+  email: string;
+  firstName: string;
+  code: string;
+  isCreate: boolean;
+};
 export function FormPassword() {
-  const { loading, signIn } = useAuth();
+  const location = useLocation();
+  const user = useAuthStore((store) => store.state.user);
+  const { email, code, isCreate } = location.state as LocationProps;
   const {
-    register,
+    onSubmit,
+    errors,
     handleSubmit,
-    formState: { errors, isDirty, isValid },
-  } = useForm({
-    mode: 'onChange',
-    resolver: yupResolver(passwordManagerSchema),
+    isDirty,
+    isValid,
+    loading,
+    register,
+    token,
+  } = usePasswordManager({
+    code,
+    email,
+    origin: isCreate ? 'signup' : 'forgot',
   });
 
-  const onSubmit = useCallback(
-    async (data: CredentialProps) => {
-      await signIn(data);
-    },
-    [signIn],
-  );
+  if (token) {
+    return <Navigate to="/panel/home" />;
+  }
 
-  const user = {
-    firstName: 'Antonio',
-  };
   return (
     <S.Container>
       <h2>

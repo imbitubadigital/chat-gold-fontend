@@ -3,6 +3,8 @@ import * as S from './styles';
 import { useRoom } from '@/hooks/room';
 import { useSocket } from '@/contexts/socket';
 import { useAuthStore } from '@/store/auth';
+import { Fragment } from 'react';
+import { UserCircleGear, UserCircle } from 'phosphor-react';
 
 export function Menu() {
   const { loading, rooms } = useRoom();
@@ -28,14 +30,30 @@ export function Menu() {
     <S.Container>
       {!loading &&
         rooms?.map((room) => (
-          <NavLink
-            key={room.id}
-            to={`/panel/sala?name=${room.name}&id=${room.id}`}
-            onClick={handleClick}
-            className={room.name === roomName ? 'menu-active' : 'menu-normal'}
-          >
-            <span>{room.name}</span>
-          </NavLink>
+          <Fragment key={room.id}>
+            <NavLink
+              to={`/panel/sala?name=${room.name}&id=${room.id}`}
+              onClick={handleClick}
+              className={room.name === roomName ? 'menu-active' : 'menu-normal'}
+            >
+              <span>{room.name}</span>
+            </NavLink>
+            {room.joinedRoom.length > 0 && (
+              <S.Content>
+                {room.joinedRoom.map((joinedRoom) => (
+                  <p key={joinedRoom.id}>
+                    {user.id === joinedRoom.user.id ? (
+                      <UserCircleGear size={24} />
+                    ) : (
+                      <UserCircle size={24} />
+                    )}
+
+                    {`${joinedRoom.user.firstName}`}
+                  </p>
+                ))}
+              </S.Content>
+            )}
+          </Fragment>
         ))}
     </S.Container>
   );
