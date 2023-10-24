@@ -1,5 +1,5 @@
 import * as S from './styles';
-import { FormValidateCode } from '@/components/FormValidateCode';
+import { FormValidateCode } from '../../components/FormValidateCode';
 
 export function ValidateCode() {
   return (

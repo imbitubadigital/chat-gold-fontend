@@ -1,5 +1,5 @@
 import * as S from './styles';
-import { DashboardTemplate } from '@/components/templates/Dashboard';
+import { DashboardTemplate } from '../../components/templates/Dashboard';
 
 export function Home() {
   return (
