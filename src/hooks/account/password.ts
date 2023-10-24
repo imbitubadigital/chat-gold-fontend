@@ -9,9 +9,11 @@ import { useAuthStore } from '@/store/auth';
 import { useForm } from 'react-hook-form';
 
 import { createPasswordRequest } from '@/services/http/auth';
-import { passwordManagerSchema } from '@/utils/yup';
+
 import { ChangePasswordRequestProps } from '@/services/http/auth/types';
-import { yupResolver } from '@hookform/resolvers/yup';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { passwordManagerFormSchema } from '@/utils/zod';
 
 export const usePasswordManager = ({
   code,
@@ -38,7 +40,7 @@ export const usePasswordManager = ({
     formState: { errors, isDirty, isValid },
   } = useForm({
     mode: 'onChange',
-    resolver: yupResolver(passwordManagerSchema),
+    resolver: zodResolver(passwordManagerFormSchema),
   });
 
   const [loading, setLoading] = useState(false);

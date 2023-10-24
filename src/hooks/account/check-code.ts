@@ -21,7 +21,7 @@ export const useCheckCode = ({ email, firstName, isCreate }: LocationProps) => {
   const [codeValidationControllerRequest, codeValidationControllerAbort] =
     useControlledRequest(codeValidationRequest);
 
-  const { forgotPassword } = useForgotPassword();
+  const { onSubmit } = useForgotPassword();
 
   const [timer, setTimer] = useState(30);
   const [code, setCode] = useState('');
@@ -46,14 +46,14 @@ export const useCheckCode = ({ email, firstName, isCreate }: LocationProps) => {
       return true;
     }
     setTimer(30);
-    await forgotPassword({ email });
+    await onSubmit({ email });
 
     setTimer(30);
     addToast({
       type: 'success',
       message: 'Reenviamos um novo código para você',
     });
-  }, [addToast, email, forgotPassword, timer]);
+  }, [addToast, email, onSubmit, timer]);
 
   const codeVerification = useCallback(async () => {
     try {
