@@ -49,7 +49,7 @@ export function FormLogin() {
         <Separator mt={2} />
         <S.ContainerLink>
           <NavLink to={`/cadastro`}>
-            <span>Ainda nao tem conta? Cadastre-se!</span>
+            <span>Ainda não tem conta? Cadastre-se!</span>
           </NavLink>
         </S.ContainerLink>
       </form>
