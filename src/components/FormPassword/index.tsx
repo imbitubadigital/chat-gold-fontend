@@ -45,6 +45,7 @@ export function FormPassword() {
       <Separator mt={1} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
+          type="password"
           placeholder="Digite sua senha"
           error={errors?.password?.message || ''}
           {...register('password')}
