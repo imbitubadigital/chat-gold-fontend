@@ -28,7 +28,7 @@ export function Header() {
   return (
     <S.Container>
       <h1>
-        <ChatCenteredText size={40} /> ChatGoldx
+        <ChatCenteredText size={40} /> ChatGold
       </h1>
       <S.ContainerRight>
         <p>
